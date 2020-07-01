@@ -1,0 +1,64 @@
+Name:Harshita Srinivas
+Roll no:2019244
+******************************INPUT DATA*************************************************************************
+
+In order to compute the required probability we consider the input data in the form of arrays.
+Timestamps of Messages obtained:
+
+The first array denotes 31 timestamps to compute the timestamps of the next 30 messages obtained after the first timestamp(16:20:39)
+
+[                  
+16:20:39                                                      
+16:20:40
+16:20:44
+16:20:50
+16:21:02
+16:21:34
+16:22:56
+16:23:30
+16:24:15
+16:25:09
+16:26:29
+16:27:37
+16:27:55
+16:29:13
+16:30:41
+16:32:09
+16:33:39
+16:35:12
+16:38:10
+16:41:12
+16:47:47
+16:57:30
+17:12:30
+17:27:32
+17:48:56
+18:22:56
+19:12:05
+20:06:10
+21:06:10
+22:06:38
+00:41:41
+]
+
+**********************Code Explanation************************************************************************************************************************
+Time gap of the next 30 messages:[1;4;6;12;22;24;34;45;54;68;68;78;78;88;88;90;93;178;182;395;583;900;902;1284;2040;2949;3245;3600;3628;9303]
+Here the time gap between the messages is taken in seconds for greater input accuracy.
+
+We obtain the histogram for the input array using the histogram(x) function in matlab.
+We fit a suitable density function in the histogram using the histfit(x) function.
+The consequent code fitdist(x,'Normal') converts that data into a normal distribution for easier computation
+The normal distribution of x yields parameters sigma and mu. We then compute the cdf about the mean for the distribution. Since normal distribution is a uniform distribution the mean remains constant(0.5) for every distribution.
+Also In the code a make a seperate array a containing elements whose time gap is less than the expected time gap
+
+In the second experiment we compute the data for 10 messages obtained from the same person
+The data is represented in the form of an array newarr
+
+
+Timestamps=[7:22:00,7:22:16,7:22:48,7:24:09,7:25:39,7:28:59,7:32:52,7:42:15,7:57:14,8:14:24]
+newarr=[16;32;33;48;90;200;233;563;899;1030];
+
+We again compute the probability using the normal distribution. Then using an if else statements we seperate the data in two arrays head and tails
+We calculate the number of non zero elements in both arrays to compute the number of heads and tails.
+
+In the output window we print the probability obtained in both cases(the time gap is less than the expected time gap),Number of heads and tails obtained and the final histogram containing the density function. 
